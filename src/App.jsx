@@ -1,10 +1,13 @@
 import './App.css'
+import { AboutPage } from './components/About'
+import { HomePage } from './components/Home'
 
 function App() {
 
   return (
     <>
-      <h1>Custom router</h1>
+      <HomePage/>
+      <AboutPage/>
     </>
   )
 }
