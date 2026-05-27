@@ -1,12 +1,11 @@
-import { navigate } from "../routing/utils";
+import { CustomLink } from "./customLink";
 
 export function AboutPage(){
     return (
         <>
             <h1>About Section</h1>
             <p>This is the about page section to test the app rounting</p>
-            <a href="/">Home</a>
-            <button onClick={() => navigate('/')}>Go Home</button>
+            <CustomLink to={'/'}>Go Home</CustomLink>
         </>
     )
 }
