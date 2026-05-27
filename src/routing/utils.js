@@ -1,4 +1,4 @@
-const NAVIGATION_EVENT = 'pushstate'
+export const NAVIGATION_EVENT = 'pushstate'
 
 export function navigate(nextPageRef){
     window.history.pushState({}, '', nextPageRef)
