@@ -1,7 +1,8 @@
 import { navigate } from "../routing/utils";
 
 export function CustomLink({target, to, ...props}){
-    const handleOnClick = () => {
+    const handleOnClick = (event) => {
+        event.preventDefault()
         navigate(to)
     }
 
