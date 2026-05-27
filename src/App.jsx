@@ -3,7 +3,7 @@ import './App.css'
 import { AboutPage } from './components/About'
 import { HomePage } from './components/Home'
 
-import { NAVIGATION_EVENT } from './routing/utils.js'
+import { NAVIGATION_EVENT } from './routing/constants.js'
 
 function App() {
   
@@ -14,10 +14,12 @@ function App() {
       setCurrentPage(window.location.pathname)
     }
 
-    window.addEventListener(NAVIGATION_EVENT, onLocationChange)
+    window.addEventListener(NAVIGATION_EVENT.PUSH_STATE, onLocationChange)
+    window.addEventListener(NAVIGATION_EVENT.POP_STATE, onLocationChange)
 
     return () => {
-      window.removeEventListener(NAVIGATION_EVENT, onLocationChange)
+      window.removeEventListener(NAVIGATION_EVENT.PUSH_STATE, onLocationChange)
+      window.removeEventListener(NAVIGATION_EVENT.POP_STATE, onLocationChange)
     }
   })
 

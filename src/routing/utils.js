@@ -1,7 +1,7 @@
-export const NAVIGATION_EVENT = 'pushstate'
+import { NAVIGATION_EVENT } from "./constants"
 
 export function navigate(nextPageRef){
     window.history.pushState({}, '', nextPageRef)
-    const navigationEvent = new Event(NAVIGATION_EVENT)
+    const navigationEvent = new Event(NAVIGATION_EVENT.PUSH_STATE)
     window.dispatchEvent(navigationEvent)
 }
