@@ -7,7 +7,11 @@ export function AppRouter({children, routes = [], defaultComponent: DefaultCompo
     const [currentPath, setCurrentPath] = useState(window.location.pathname)
 
     const routesFromChildren = Children.map(children, ({props, type}) => {
-      
+      const {name} = type
+      const isRoute = name === 'Route'
+      return isRoute
+                  ? props
+                  : null
     })
     
     useEffect(() => {
