@@ -12,7 +12,7 @@ function App() {
     <main>
       <AppRouter routes={appRoutes} defaultComponent={NotFoundPage}>
         <Route path='/' Component={HomePage}/>
-        <Route path='/' Component={AboutPage}/>
+        <Route path='/about' Component={AboutPage}/>
       </AppRouter>
     </main>
   )

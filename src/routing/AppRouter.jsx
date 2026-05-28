@@ -13,6 +13,8 @@ export function AppRouter({children, routes = [], defaultComponent: DefaultCompo
                   ? props
                   : null
     })
+
+    const routesToUse = routes.concat(routesFromChildren)
     
     useEffect(() => {
       const onLocationChange = () => {
@@ -30,7 +32,7 @@ export function AppRouter({children, routes = [], defaultComponent: DefaultCompo
 
     let routeParams = {}
 
-    const Page = routes.find(({path}) => {
+    const Page = routesToUse.find(({path}) => {
       if(path === currentPath) return true
 
       const matcherUrl = match(path, {decode: decodeURIComponent})
