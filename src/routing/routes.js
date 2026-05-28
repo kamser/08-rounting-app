@@ -1,5 +1,5 @@
-import { HomePage } from "../components/Home";
-import { AboutPage } from "../components/About";
+import { HomePage } from '../pages/Home.jsx';
+import { AboutPage } from "../pages/About.jsx";
 
 export const appRoutes = [
     {

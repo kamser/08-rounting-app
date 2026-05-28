@@ -1,4 +1,4 @@
-import { CustomLink } from "./customLink";
+import { CustomLink } from '../components/CustomLink.jsx';
 
 export function AboutPage(){
     return (
