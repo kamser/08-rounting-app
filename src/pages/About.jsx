@@ -1,6 +1,6 @@
 import { CustomLink } from '../components/CustomLink.jsx';
 
-export function AboutPage(){
+export default function AboutPage(){
     return (
         <>
             <h1>About Section</h1>

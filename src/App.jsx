@@ -4,18 +4,20 @@ import { AppRouter } from './routing/AppRouter.jsx'
 import { Route } from './components/Route.jsx'
 import { appRoutes } from './routing/routes.js'
 
-import { NotFoundPage } from './pages/NotFound.jsx'
-import { HomePage } from './pages/Home.jsx'
-import { AboutPage } from './pages/About.jsx'
+const LazyNotFoundPage = lazy(() => import('./pages/NotFound.jsx'))
+const LazyHomePage = lazy(() => import('./pages/Home.jsx'))
+const LazyAboutPage = lazy(() => import('./pages/About.jsx'))
 
 function App() {
 
   return (
     <main>
-      <AppRouter routes={appRoutes} defaultComponent={NotFoundPage}>
-        <Route path='/' Component={HomePage}/>
-        <Route path='/about' Component={AboutPage}/>
-      </AppRouter>
+      <Suspense fallback={null}>
+        <AppRouter routes={appRoutes} defaultComponent={LazyNotFoundPage}>
+          <Route path='/' Component={LazyHomePage}/>
+          <Route path='/about' Component={LazyAboutPage}/>
+        </AppRouter>
+      </Suspense> 
     </main>
   )
 }
