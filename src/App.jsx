@@ -1,3 +1,5 @@
+import { lazy, Suspense } from 'react'
+
 import { AppRouter } from './routing/AppRouter.jsx'
 import { Route } from './components/Route.jsx'
 import { appRoutes } from './routing/routes.js'
