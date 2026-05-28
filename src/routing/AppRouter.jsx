@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Children } from "react";
 import { NAVIGATION_EVENT } from "./constants";
 import { match } from 'path-to-regexp'
 
 export function AppRouter({children, routes = [], defaultComponent: DefaultComponent = () => <h1>404 Error</h1>}){
     
     const [currentPath, setCurrentPath] = useState(window.location.pathname)
+
+    const routesFromChildren = Children.map(children, ({props, type}) => {
+      
+    })
     
     useEffect(() => {
       const onLocationChange = () => {
