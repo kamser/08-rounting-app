@@ -22,6 +22,9 @@ export function AppRouter({routes = [], defaultComponent: DefaultComponent = () 
 
       let routeParams = {}
 
-      const Page = routes.find(({path}) => path === currentPath)?.Component
+      const Page = routes.find(({path}) => {
+        if(path === currentPath) return true
+      
+      })?.Component
       return Page ? <Page/> : <DefaultComponent/>
 }
