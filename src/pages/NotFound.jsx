@@ -1,7 +1,7 @@
 
 import { CustomLink } from "../components/CustomLink";
 
-export function NotFoundPage(){
+export default function NotFoundPage(){
     return (
         <>
             <p>Something went wrong</p>
