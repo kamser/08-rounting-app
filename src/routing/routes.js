@@ -4,14 +4,6 @@ import { SearchPage } from '../pages/Search.jsx';
 
 export const appRoutes = [
     {
-        path: '/',
-        Component: HomePage
-    },
-    {
-        path:'/about',
-        Component: AboutPage
-    },
-    {
         path:'/search/:query',
         Component: SearchPage
     }
