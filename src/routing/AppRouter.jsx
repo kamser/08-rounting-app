@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NAVIGATION_EVENT } from "./constants";
+import { match } from 'path-to-regexp'
 
 export function AppRouter({routes = [], defaultComponent: DefaultComponent = () => <h1>404 Error</h1>}){
     
@@ -18,6 +19,8 @@ export function AppRouter({routes = [], defaultComponent: DefaultComponent = () 
           window.removeEventListener(NAVIGATION_EVENT.POP_STATE, onLocationChange)
         }
       }, [])
+
+      let routeParams = {}
 
       const Page = routes.find(({path}) => path === currentPath)?.Component
       return Page ? <Page/> : <DefaultComponent/>
