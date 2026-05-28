@@ -33,5 +33,7 @@ export function AppRouter({routes = [], defaultComponent: DefaultComponent = () 
         return true
       
       })?.Component
-      return Page ? <Page/> : <DefaultComponent/>
+      return Page 
+                ? <Page routeParams={routeParams}/> 
+                : <DefaultComponent routeParams={routeParams}/>
 }
