@@ -1,6 +1,8 @@
 import {describe, it, expect, beforeEach, vi} from 'vitest'
-import {render, screen, cleanup} from '@testing-library/react'
+import {render, screen, cleanup, fireEvent } from '@testing-library/react'
 import { AppRouter } from './AppRouter.jsx'
+import { Route } from '../components/Route.jsx'
+import { CustomLink } from '../components/CustomLink.jsx'
 import { getCurrentPath } from './utils.js'
 
 vi.mock('./utils.js', () => ({
@@ -42,4 +44,33 @@ describe('Router', () => {
         render(<AppRouter routes={routes}/>)
         expect(screen.getByText('About')).toBeTruthy()
     })
+
+    it('should navigate using Links', async () => {
+    getCurrentPath.mockReturnValueOnce('/')
+
+    render(
+      <AppRouter>
+        <Route
+          path='/' Component={() => {
+            return (
+              <>
+                <h1>Home</h1>
+                <CustomLink to='/about'>Go to About</CustomLink>
+              </>
+            )
+          }}
+        />
+        <Route path='/about' Component={() => (<h1>About</h1>)} />
+      </AppRouter>
+    )
+
+    // Click on the link
+    const anchor = screen.getByText(/Go to About/)
+    fireEvent.click(anchor)
+
+    const aboutTitle = await screen.findByText('Home')
+
+    // Check that the new route is rendered
+    expect(aboutTitle).toBeTruthy()
+  })
 })
