@@ -1,11 +1,17 @@
-import {describe, it, expect, beforeEach} from 'vitest'
+import {describe, it, expect, beforeEach, vi} from 'vitest'
 import {render, screen, cleanup} from '@testing-library/react'
-import { AppRouter } from './AppRouter'
+import { AppRouter } from './AppRouter.jsx'
+import { getCurrentPath } from './utils.js'
+
+vi.mock('./utils.js', () => ({
+    getCurrentPath: vi.fn()
+}))
 
 describe('Router', () => {
 
     beforeEach(() => {
         cleanup()
+        vi.clearAllMocks()
     })
 
     it('should render without problems', () => {
@@ -20,6 +26,8 @@ describe('Router', () => {
 
     it('should render the component of the first route that matches', () => {
         
+        getCurrentPath.mockReturnValue('/about')
+
         const routes = [
             {
                 path: '/',
@@ -32,6 +40,6 @@ describe('Router', () => {
         ]
 
         render(<AppRouter routes={routes}/>)
-        expect(screen.getByText('Home')).toBeTruthy()
+        expect(screen.getByText('About')).toBeTruthy()
     })
 })
