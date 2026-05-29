@@ -17,4 +17,21 @@ describe('Router', () => {
         render(<AppRouter routes={[]} defaultComponent={() => <h1>404</h1>}/>)
         expect(screen.getByText('404')).toBeTruthy()
     })
+
+    it('should render the component of the first route that matches', () => {
+        
+        const routes = [
+            {
+                path: '/',
+                Component: () => <h1>Home</h1>
+            },
+            {
+                path: '/about',
+                Component: () => <h1>About</h1>
+            }
+        ]
+
+        render(<AppRouter routes={routes}/>)
+        expect(screen.getByText('Home')).toBeTruthy()
+    })
 })
