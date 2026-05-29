@@ -14,7 +14,7 @@ export function AppRouter({children, routes = [], defaultComponent: DefaultCompo
                   : null
     })
 
-    const routesToUse = routes.concat(routesFromChildren)
+    const routesToUse = routes.concat(routesFromChildren).filter(Boolean)
     
     useEffect(() => {
       const onLocationChange = () => {
